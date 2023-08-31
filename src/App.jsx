@@ -1,9 +1,10 @@
 import './App.css'
+import Sidebar from './components/sidebar'
 
 function App() {
   return (
     <>
-      <h1 className='text-4xl'>create react app</h1>
+     <Sidebar />
     </>
   )
 }
