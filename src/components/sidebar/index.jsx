@@ -6,7 +6,7 @@ import { ImHome } from "react-icons/im";
 import { BsWalletFill } from "react-icons/bs";
 import { PiNotepadFill } from "react-icons/pi";
 import { TbLogout } from "react-icons/tb";
-import Home from "../home";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const [openMenuIndex, setOpenMenuIndex] = useState(-1);
@@ -19,8 +19,8 @@ const Sidebar = () => {
     setOpenMenuIndex(-1);
   };
   const Menus = [
-    { title: "Dashboard", src: GiStarsStack },
-    { title: "Inbox", src: AiFillAppstore },
+    { title: "Dashboard", src: GiStarsStack, to: "/" },
+    { title: "Inbox", src: AiFillAppstore, to: "/about" },
     { title: "Accounts", src: RiTeamFill },
     { title: "Schedule ", src: ImHome },
     { title: "Search", src: BsWalletFill },
@@ -30,20 +30,17 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="flex px-8 space-x-14">
-      <div
-        className={`${"w-16"} bg-[#f1f5f9] h-screen pt-8 relative duration-300 rounded-xl`}
-      >
-        <ul className="pt-6">
-          {Menus.map((Menu, index) => (
+    <div
+      className={`${"w-16"} bg-[#f1f5f9] relative duration-300 rounded-xl`}
+    >
+      <ul className="">
+        {Menus.map((Menu, index) => (
+          <Link key={index} to={Menu.to}>
             <li
-              key={index}
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
-              className={`flex  justify-center p-2 rounded-md cursor-pointer hover:bg-[rgba(255,255,255,0.17)] text-gray-300 text-sm items-center gap-x-4 
-              ${Menu.gap ? "mt-9" : "mt-2"} ${
-                index === Menus.length - 1 && "absolute bottom-12 w-full"
-              } `}
+              className={`flex justify-center p-2 rounded-md cursor-pointer hover:bg-[rgba(255,255,255,0.17)] text-gray-300 text-sm items-center gap-x-4 
+            ${index === Menus.length - 1 && "absolute bottom-12 w-full"} `}
             >
               <Menu.src
                 className={`w-8 h-8 ${
@@ -60,12 +57,9 @@ const Sidebar = () => {
                 {Menu.title}
               </span>
             </li>
-          ))}
-        </ul>
-      </div>
-      <div className="h-screen bg-[#f1f5f9] rounded-xl flex-1">
-       <Home />
-      </div>
+          </Link>
+        ))}
+      </ul>
     </div>
   );
 };
