@@ -9,9 +9,9 @@ export default function Header() {
   const [enabled, setEnabled] = useState(false);
 
   return (
-    <div className="bg-transparent h-16 w-screen max-w-screen-2xl  px-4 flex items-center justify-end ">
-      <div className="flex items-center ">
-        <div className="relative ">
+    <div className="bg-transparent h-16 w-screen max-w-screen-2xl  px-4 flex items-center  ">
+      <div className="flex items-center justify-center w-full">
+        <div className="relative hidden md:block">
           <div className="absolute top-1/2 shadow-md rounded-l-full -translate-y-1/2 h-full flex items-center px-3 bg-greyDark">
             <HiOutlineSearch fontSize={20} className="text-gray-400  " />
           </div>{" "}
@@ -21,7 +21,7 @@ export default function Header() {
             className="text-sm focus:outline-none active:outline-none shadow-lg w-[24rem] h-10 pl-14 pr-4 rounded-full"
           />
         </div>
-        <div className="flex items-center gap-5 mr-2">
+        <div className="flex items-center gap-3 justify-end w-full mr-10">
           <Switch
             checked={enabled}
             onChange={setEnabled}
@@ -38,7 +38,7 @@ export default function Header() {
           </Switch>
 
           <div className="flex flex-col">
-            <h1 className="text-md">Hello, Developer User</h1>
+            <h1 className="text-sm md:text-md">Hello, Developer User</h1>
             <p className="text-sm text-gray-400">Helpdesk Record Manager</p>
           </div>
 

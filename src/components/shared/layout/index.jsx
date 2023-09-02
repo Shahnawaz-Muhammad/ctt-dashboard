@@ -15,13 +15,15 @@ export default function Layout() {
     //     </div>
     //   </div>
     // </div>
-    <div className="bg-gray-100 h-screen w-full overflow-hidden flex mx-auto flex-row px-8 py-5">
+    <div className="bg-gray-100 h-screen w-full overflow-hidden flex mx-auto flex-row px-2 md:px-8 py-5">
       <div className="flex flex-col gap-4">
         <Header />
-        <div className="flex flex-row flex-1 ">
+        <div className="flex flex-row flex-1 overflow-auto">
           <Sidebar />
-          <div className="flex-1 p-4 min-h-0 max-h-screen overflow-auto bg-greyDark mx-8 rounded-2xl">
-            <Outlet />
+          <div className="flex-1 min-h-0 max-h-screen overflow-auto bg-greyDark mx-8 rounded-2xl">
+            <div className="w-full py-5 px-5 md:px-10 ">
+              <Outlet />
+            </div>
           </div>
         </div>
       </div>
