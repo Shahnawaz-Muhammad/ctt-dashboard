@@ -1,32 +1,39 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { Menu, Transition, Switch } from "@headlessui/react";
 import { Fragment } from "react";
 import { HiOutlineSearch,HiOutlineSun, HiMoon } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../../../context/themeContext";
 
 export default function Header() {
   const navigate = useNavigate();
-  const [enabled, setEnabled] = useState(false);
+  // const [enabled, setEnabled] = useState(false);
+
+  const {enabled, setEnabled} = useContext(ThemeContext)
+
+  const handleThemeChange = () => {
+    setEnabled(!enabled)
+  }
 
   return (
     <div className="bg-transparent h-16 w-screen max-w-screen-2xl  px-4 flex items-center  ">
       <div className="flex items-center justify-center w-full">
         <div className="relative hidden md:block">
-          <div className="absolute top-1/2 shadow-md rounded-l-full -translate-y-1/2 h-full flex items-center px-3 bg-greyDark">
-            <HiOutlineSearch fontSize={20} className="text-gray-400  " />
+          <div className={`${enabled ? "bg-gray-600" : "bg-greyDark"} absolute top-1/2 shadow-md rounded-l-full -translate-y-1/2 h-full flex items-center px-3 `}>
+            <HiOutlineSearch fontSize={20} className={`${enabled ? "text-gray-100" : "text-gray-800"}`} />
           </div>{" "}
           <input
             type="text"
             placeholder="Type Your Search..."
-            className="text-sm focus:outline-none active:outline-none shadow-lg w-[24rem] h-10 pl-14 pr-4 rounded-full"
+            className={`${enabled ? "bg-white" : "bg-gray-300 text-white"} text-sm focus:outline-none active:outline-none shadow-lg w-[24rem] h-10 pl-14 pr-4 rounded-full`}
           />
         </div>
         <div className="flex items-center gap-3 justify-end w-full mr-10">
           <Switch
             checked={enabled}
-            onChange={setEnabled}
+            onChange={handleThemeChange}
             className={`${
-              enabled ? "bg-blue-600" : "bg-gray-200"
+              enabled ? "bg-gray-600" : "bg-gray-200"
             } relative inline-flex h-8 w-16 items-center rounded-full`}
           >
             <span className="sr-only">Enable notifications</span>
@@ -39,7 +46,7 @@ export default function Header() {
 
           <div className="flex flex-col">
             <h1 className="text-sm md:text-md">Hello, Developer User</h1>
-            <p className="text-sm text-gray-400">Helpdesk Record Manager</p>
+            <p className={`${enabled ? "text-gray-100" : "text-gray-800"} text-sm`}>Helpdesk Record Manager</p>
           </div>
 
           <Menu as="div" className="relative">
