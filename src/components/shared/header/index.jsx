@@ -16,8 +16,8 @@ export default function Header() {
   }
 
   return (
-    <div className="bg-transparent h-16 w-screen max-w-screen-2xl  px-4 flex items-center  ">
-      <div className="flex items-center justify-center w-full">
+    <div className="bg-transparent h-16 w-screen px-4 flex items-center justify-end ">
+      <div className="flex items-center justify-center w-full max-w-screen-xl lg:px-8 py-5">
         <div className="relative hidden md:block">
           <div className={`${enabled ? "bg-gray-600" : "bg-greyDark"} absolute top-1/2 shadow-md rounded-l-full -translate-y-1/2 h-full flex items-center px-3 `}>
             <HiOutlineSearch fontSize={20} className={`${enabled ? "text-gray-100" : "text-gray-800"}`} />
@@ -25,7 +25,7 @@ export default function Header() {
           <input
             type="text"
             placeholder="Type Your Search..."
-            className={`${enabled ? "bg-white" : "bg-gray-300 text-white"} text-sm focus:outline-none active:outline-none shadow-lg w-[24rem] h-10 pl-14 pr-4 rounded-full`}
+            className={`${enabled ? "bg-gray-300 text-white" : "bg-white text-black"} text-sm focus:outline-none active:outline-none shadow-lg w-[24rem] h-10 pl-14 pr-4 rounded-full`}
           />
         </div>
         <div className="flex items-center gap-3 justify-end w-full mr-10">

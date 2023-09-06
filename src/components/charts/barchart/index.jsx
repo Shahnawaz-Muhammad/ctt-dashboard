@@ -1,38 +1,66 @@
-import { useEffect, useRef } from "react";
-import Chart from "chart.js/auto";
-import PropTypes from "prop-types";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
 
-const BarChart = ({ data }) => {
-  const chartRef = useRef(null);
-  const chartInstance = useRef(null); // Store the chart instance
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
-  useEffect(() => {
-    const ctx = chartRef.current.getContext("2d");
-
-    // Check if a chart instance already exists, and destroy it if it does
-    if (chartInstance.current) {
-      chartInstance.current.destroy();
-    }
-
-    // Create a new chart instance
-    chartInstance.current = new Chart(ctx, {
-      type: "bar",
-      data: data,
-    });
-
-    return () => {
-      // Clean up and destroy the chart instance when the component unmounts
-      if (chartInstance.current) {
-        chartInstance.current.destroy();
-      }
-    };
-  }, [data]);
-
-  return <canvas ref={chartRef}></canvas>;
+export const options = {
+  indexAxis: 'y',
+  elements: {
+    bar: {
+      borderWidth: 2,
+    },
+  },
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'right',
+    },
+    title: {
+      display: true,
+      text: 'Chart.js Horizontal Bar Chart',
+    },
+  },
 };
 
-BarChart.propTypes = {
-  data: PropTypes.object.isRequired,
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+
+export const data = {
+  labels,
+  datasets: [
+    {
+      label: 'Dataset 1',
+      data: [100, 200, 300, 400, 500, 600, 700], // Replace with your custom data
+      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+    },
+    {
+      label: 'Dataset 2',
+      data: [200, 300, 400, 500, 600, 700, 800], // Replace with your custom data
+      borderColor: 'rgb(53, 162, 235)',
+      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+    },
+  ],
 };
 
-export default BarChart;
+export default function BarChart() {
+  return (
+    <div className="w-full flex justify-center items-center h-[18.75rem]">
+  <Bar options={options} data={data} />
+  </div>)
+}
