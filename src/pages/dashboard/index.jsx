@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import PieChart from "../../components/charts/piechart";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/themeContext";
+import Complaint from "../../components/complaint";
 const Dashboard = () => {
   const {enabled} = useContext(ThemeContext)
   return (
@@ -23,7 +24,9 @@ const Dashboard = () => {
               </div>
               
             </div>
-            
+            <div>
+            <Complaint />
+            </div>
           </div>
         </div>
       </div>
