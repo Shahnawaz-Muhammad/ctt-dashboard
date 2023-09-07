@@ -18,7 +18,8 @@ export default function Header() {
   return (
     <div className="bg-transparent h-16 w-screen max-w-screen-2xl  px-4 flex items-center  ">
       <div className="flex items-center justify-center w-full">
-        <div className="relative hidden md:block">
+      <div className="w-full"></div>
+        <div className="relative hidden md:block w-full">
           <div className={`${enabled ? "bg-gray-600" : "bg-greyDark"} absolute top-1/2 shadow-md rounded-l-full -translate-y-1/2 h-full flex items-center px-3 `}>
             <HiOutlineSearch fontSize={20} className={`${enabled ? "text-gray-100" : "text-gray-800"}`} />
           </div>{" "}
