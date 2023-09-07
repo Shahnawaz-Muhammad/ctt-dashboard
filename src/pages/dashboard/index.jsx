@@ -11,12 +11,12 @@ const Dashboard = () => {
         <div className="w-full ">
           <div className="flex flex-col gap-3 col-span-3 mt-3 ">
             <div className="w-full flex flex-col lg:flex-row gap-5 ">
-              <div className={`${enabled ? "bg-gray-400" :"bg-white"} p-2 rounded-lg shadow-lg w-full lg:w-1/2`}>
+              <div className={`${enabled ? "bg-slate-300" :"bg-white"} p-2 rounded-lg shadow-lg w-full lg:w-1/2`}>
                 {/* <div className="w-full flex justify-center items-center h-full"> */}
                   <BarChart />
                 {/* </div> */}
               </div>
-              <div className={`${enabled ? "bg-gray-400" :"bg-white"} p-2 rounded-lg shadow-lg w-full lg:w-1/2`}>
+              <div className={`${enabled ? "bg-slate-300" :"bg-white"} p-2 rounded-lg shadow-lg w-full lg:w-1/2`}>
                 {/* <div className="w-full flex justify-center items-center h-full"> */}
                   <PieChart  />
                 {/* </div> */}
