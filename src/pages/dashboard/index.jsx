@@ -4,6 +4,7 @@ import PieChart from "../../components/charts/piechart";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/themeContext";
 import './dashboard.css'
+import Complaint from "../../components/complaint";
 
 const Dashboard = () => {
   const {enabled} = useContext(ThemeContext)
@@ -27,6 +28,8 @@ const Dashboard = () => {
                 
                   <BarChart />
             </div>
+                
+            <Complaint />
             
           </div>
         </div>

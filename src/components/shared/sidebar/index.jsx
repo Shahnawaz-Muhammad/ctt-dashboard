@@ -7,6 +7,8 @@ import PropTypes from "prop-types";
 import { useContext, useState } from "react";
 import { ThemeContext } from "../../../context/themeContext";
 
+import { motion } from "framer-motion";
+
 const linkClass =
   "flex items-center gap-2 font-light px-3 py-2 rounded-sm text-base";
 //
@@ -32,7 +34,7 @@ export default function Sidebar() {
       }  lg:px-3 py-10 flex flex-col rounded-2xl justify-between`}
     >
       <div>
-        <div className="flex items-center px-1">
+        <div className="flex items-center justify-center ">
           <FcBullish fontSize={34} />
           {/* <span className="text-neutral-200 text-lg">OpenShop</span> */}
         </div>
@@ -50,17 +52,22 @@ export default function Sidebar() {
       </div>
       <div className="flex flex-col gap-0.5 relative">
         <div
-          className={`${enabled ? "hover:bg-slate-800" : "hover:bg-slate-300"} cursor-pointer text-red-500 , ${linkClass}`}
+          className={` cursor-pointer text-red-500 , ${linkClass}`}
           onMouseEnter={() => setShowLogout(true)}
           onMouseLeave={handleMouseLeave}
         >
           <span>
-            <HiOutlineLogout className="text-red text-3xl" />
+            <HiOutlineLogout className="hover:text-5xl text-3xl transition-all duration-300 text-red" />
           </span>
           {showLogoout && (
-            <span className="bg-greyDark  px-3 py-2 rounded-r-lg shadow-xl absolute left-14 font-semibold">
+            <motion.div
+              initial={{ opacity: 0, x: -15 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay:.2 }}
+              className={`${enabled ? "bg-gray-600" : "bg-greyDark"}  px-3 py-2 rounded-r-lg shadow-xl absolute left-14 font-semibold`}
+            >
               Logout
-            </span>
+            </motion.div>
           )}
         </div>
       </div>
@@ -75,48 +82,56 @@ function SidebarLink({ link, handleMouseEnter, handleMouseLeave, isHovered }) {
   return (
     <Link
       to={link.path}
-      className={` ${linkClass} relative w-full h-full ${enabled ? "hover:bg-slate-800" : "hover:bg-slate-300"}`}
+      className={` ${linkClass} relative w-full h-full `}
       onMouseEnter={() => handleMouseEnter(link.key)}
       onMouseLeave={handleMouseLeave}
     >
       <div
         className={`${
-          pathname === link.path ? " text-gray-500" : "text-gray-700"
-        }, text-2xl ${enabled ? "text-gray-300" : "text-gray-600"}`}
+          pathname === link.path ? " text-gray-500 text-5xl" : "text-gray-700 text-3xl"
+        } ${enabled ? "text-white" : "text-gray-600"} ${isHovered ? 'text-5xl transition-all duration-300 ' : 'text-3xl transition-all duration-300'}`}
       >
         {link.icon}
       </div>
-      {/* <span className={`${showTitle ? "flex" : "hidden"} bg-greyDark px-3 py-1 rounded-r-lg absolute  left-14`}>{link.label}</span> */}
       {isHovered && (
-        <div className={`${enabled ? "bg-gray-600" : "bg-gray-300"} px-3 py-2 rounded-r-lg shadow-xl absolute top-0 left-14 font-semibold`}>
-          <div className="flex flex-col gap-2 ">
-          <span className="">{link.label}</span>
-          {link.subItems && (
-            <div className="mt-3">
-              {link.subItems.map((subItem) => (
-                <Link
-                  key={subItem.key}
-                  to={subItem.path}
-                  className={` ${linkClass} ${
+        <motion.div
+          initial={{ opacity: 0, x: -15 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2}}
+          className={`${
+            enabled ? "bg-gray-600" : "bg-gray-300"
+          } px-3 py-2 rounded-r-lg shadow-xl absolute top-0 left-14 font-semibold`}
+        >
+          <div className="flex flex-col gap-2 justify-center w-40">
+            <span className="flex justify-center">{link.label}</span>
+            {link.subItems && (
+              <div >
+                {link.subItems.map((subItem) => (
+                  <motion.div
+                    key={subItem.key}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: subItem.index * 2 }}
+                    to={subItem.path}
+                    className={` ${linkClass} ${
                       pathname === subItem.path
                         ? " text-gray-500"
                         : "text-gray-700"
-                    }, relative w-full h-full  text-md ${enabled ? "text-gray-300 hover:bg-gray-500 " : "bg-gray-300 hover:bg-gray-200 text-black"}`}
-                >
-                  {/* <div
-                    className={` `}
+                    }, relative w-full h-full flex justify-center text-md ${
+                      enabled
+                        ? "text-gray-300 hover:bg-gray-500 "
+                        : "bg-gray-300 hover:bg-gray-200 text-black"
+                    }`}
                   >
-                    {subItem.icon}
-                  </div> */}
-                  <span className="rounded-r-lg   left-14 font-semibold">
-                    {subItem.label}
-                  </span>
-                </Link>
-              ))}
-            </div>
-          )}
+                    <span className="rounded-r-lg   left-14 font-semibold">
+                      {subItem.label}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            )}
           </div>
-        </div>
+        </motion.div>
       )}
     </Link>
   );
