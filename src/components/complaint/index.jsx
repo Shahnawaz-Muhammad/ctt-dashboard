@@ -311,8 +311,9 @@ function Complaint() {
         </p>
 
         <div className="">{showPagination()}</div>
-        </div>
       </div>
+
+    </div>
   );
 }
 

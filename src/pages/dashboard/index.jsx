@@ -10,8 +10,8 @@ import { LineChart } from "../../components/charts/linechart";
 const Dashboard = () => {
   const {enabled} = useContext(ThemeContext)
   return (
-    <div>
-      <div className="w-full flex flex-col lg:flex-row gap-5">
+    <div className="relative">
+      <div className=" absolute w-full flex flex-col lg:flex-row gap-5">
         <div className="w-full ">
           <div className="flex flex-col gap-3 col-span-3 mt-3 ">
             <div className="w-full flex flex-col lg:flex-row gap-5 ">
