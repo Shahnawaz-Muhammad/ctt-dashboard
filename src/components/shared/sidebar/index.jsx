@@ -33,12 +33,12 @@ export default function Sidebar() {
         enabled ? "bg-gray-600" : "bg-greyDark"
       }  lg:px-1 py-10 flex flex-col rounded-2xl justify-between`}
     >
-      <div>
+      <div className="flex flex-col justify-center items-center">
         <div className="flex items-center justify-center ">
           <FcBullish fontSize={34} />
           {/* <span className="text-neutral-200 text-lg">OpenShop</span> */}
         </div>
-        <div className="py-8 flex  flex-col  ">
+        <div className="py-8 flex  flex-col justify-around gap-2">
           {DASHBOARD_SIDEBAR_LINKS.map((link) => (
             <SidebarLink
               key={link.key}
@@ -50,14 +50,14 @@ export default function Sidebar() {
           ))}
         </div>
       </div>
-      <div className="flex flex-col gap-0.5 relative items-center justify-center">
+      {/* <div className="relative "> */}
         <div
-          className={` cursor-pointer text-red-500 , ${linkClass}`}
+          className={`relative cursor-pointer text-red-500 , ${linkClass}`}
           onMouseEnter={() => setShowLogout(true)}
           onMouseLeave={handleMouseLeave}
         >
           <span>
-            <HiOutlineLogout className="hover:text-5xl hover:bg-gray-300  hover:p-1 hover:shadow-lg text-3xl transition-all duration-300 text-red" />
+            <HiOutlineLogout className="hover:text-5xl hover:bg-gray-300  max-w-full hover:shadow-lg text-3xl transition-all duration-300 text-red" />
           </span>
           {showLogoout && (
             <motion.div
@@ -69,7 +69,7 @@ export default function Sidebar() {
               Logout
             </motion.div>
           )}
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );

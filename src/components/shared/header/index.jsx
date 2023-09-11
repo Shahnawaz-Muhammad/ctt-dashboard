@@ -23,8 +23,9 @@ export default function Header() {
 
   return (
     <div className="bg-transparent h-16 w-screen px-4 flex items-center justify-end ">
-      <div className="flex items-center justify-center w-full max-w-screen-xl lg:px-8 py-5">
-        <SearchBar/>
+      <div className="flex items-center justify-between w-full max-w-screen-xl lg:px-8 py-5">
+       <div className="flex flex-row-reverse md:flex-row justify-between w-full gap-5">
+       <SearchBar/>
         <div className="flex items-center gap-3 justify-end w-full ">
           <Switch
             checked={enabled}
@@ -46,7 +47,10 @@ export default function Header() {
             <p className={`${enabled ? "text-gray-100" : "text-gray-800"} text-sm`}>Helpdesk Record Manager</p>
           </div>
 
-          <Menu as="div" className="relative">
+          
+        </div>
+       </div>
+        <Menu as="div" className="relative">
             <div>
               <Menu.Button className="ml-2 mr-5 md:mr-10 bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-neutral-400">
                 <span className="sr-only">Open user menu</span>
@@ -120,7 +124,6 @@ export default function Header() {
               </Menu.Items>
             </Transition>
           </Menu>
-        </div>
       </div>
     </div>
   );
