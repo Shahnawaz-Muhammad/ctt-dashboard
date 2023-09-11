@@ -15,8 +15,8 @@ function Complaint() {
 
     try {
       return currentPosts.map((item, index) => (
-        <tbody key={index}>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-sm text-[#7E7E7E]">
+        <tbody key={index} >
+          <tr className="bg-white dark:bg-gray-800 dark:border-gray-700 text-sm text-[#7E7E7E]">
             <td className="px-6 py-4">
               {item.complaintId ? item.complaintId : "-"}
             </td>
@@ -194,7 +194,7 @@ function Complaint() {
 
   return (
     <div >
-      <div className="relavive overflow-x-auto shadow-md sm:rounded-lg grid gap-3">
+      <div className="relavive overflow-x-auto shadow-md sm:rounded-lg grid gap-3 ">
         <table className="w-full text-sm text-left text-gray-500 min-w-[1000px]">
           <thead className="text-xs text-gray-700 bg-gray-50">
             <tr>

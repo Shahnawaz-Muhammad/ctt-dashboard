@@ -1,19 +1,41 @@
 import { HiOutlineSearch } from "react-icons/hi";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect, useRef  } from "react";
 import { ThemeContext } from "../../../context/themeContext";
 
 function SearchBar() {
   const [selectedOption, setSelectedOption] = useState("Phase");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const handleOptionChange = (e) => {
     setSelectedOption(e.target.innerText); 
+    setIsDropdownOpen(false)
     toggleDropdown(); 
   };
 
   const toggleDropdown = () => {
-    setIsDropdownOpen((prevState) => !prevState);
+    setIsDropdownOpen((prevState) => (!prevState));
   };
+
+  
+  // Add a click event listener to the document body
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        // Click occurred outside the dropdown, so close it
+        setIsDropdownOpen(false);
+      }
+    }
+
+    // Attach the event listener when the component mounts
+    document.addEventListener("click", handleClickOutside);
+    
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   const { enabled, setEnabled } = useContext(ThemeContext);
 
@@ -21,10 +43,11 @@ function SearchBar() {
     setEnabled(!enabled);
   };
 
+
+
   return (
-    <div className="flex flex-row z-50">
-      <ul className="nav justify-content-end">
-        <li className="nav-item">
+    <div className="flex flex-row z-50" ref={dropdownRef}>
+      
           <div className="relative hidden md:flex items-center">
             <div
               className={`${
@@ -125,8 +148,7 @@ function SearchBar() {
               )}
             </div>
           </div>
-        </li>
-      </ul>
+        
     </div>
   );
 }

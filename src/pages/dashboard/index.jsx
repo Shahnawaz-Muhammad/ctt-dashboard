@@ -29,10 +29,9 @@ const Dashboard = () => {
                   <BarChart />
             </div>
             
-
+            <div className="animate-slide-top text-red">
               <Complaint />
-            
-               
+            </div>
             
           </div>
         </div>
