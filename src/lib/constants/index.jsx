@@ -40,9 +40,9 @@ export const DASHBOARD_SIDEBAR_LINKS = [
     icon: <HiOutlineUsers fontSize={30} />,
   },
   {
-    key: "orders",
-    label: "Orders",
-    path: "/orders",
+    key: "practice",
+    label: "Practice",
+    path: "/practice",
     icon: <HiOutlineShoppingCart fontSize={30} />,
   },
   {
