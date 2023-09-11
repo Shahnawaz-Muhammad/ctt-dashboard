@@ -31,7 +31,7 @@ export default function Sidebar() {
     <div
       className={`${
         enabled ? "bg-gray-600" : "bg-greyDark"
-      }  lg:px-3 py-10 flex flex-col rounded-2xl justify-between`}
+      }  lg:px-1 py-10 flex flex-col rounded-2xl justify-between`}
     >
       <div>
         <div className="flex items-center justify-center ">
@@ -82,7 +82,7 @@ function SidebarLink({ link, handleMouseEnter, handleMouseLeave, isHovered }) {
   return (
     <Link
       to={link.path}
-      className={` ${linkClass} relative w-20 h-full flex flex-col `}
+      className={` ${linkClass} relative w-14 h-full flex flex-col `}
       onMouseEnter={() => handleMouseEnter(link.key)}
       onMouseLeave={handleMouseLeave}
     >

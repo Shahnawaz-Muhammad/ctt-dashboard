@@ -1,10 +1,9 @@
-import { useState } from "react";
+import {  useState } from "react";
 import { complaintsData } from "../../dummyData/complaintsData";
 
 function Complaint() {
   const [postsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-
   const showData = () => {
     const indexOfLastPage = currentPage * postsPerPage;
     const indexOfFirstPage = indexOfLastPage - postsPerPage;
@@ -16,7 +15,7 @@ function Complaint() {
     try {
       return currentPosts.map((item, index) => (
         <tbody key={index}>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-sm text-[#7E7E7E]">
+          <tr className={` border-b  text-sm `}>
             <td className="px-6 py-4">
               {item.complaintId ? item.complaintId : "-"}
             </td>
@@ -115,7 +114,7 @@ function Complaint() {
 
     return (
       <nav aria-label="Page navigation example">
-        <ul className="flex items-center justify-center -space-x-px h-8 text-sm">
+        <ul className="flex items-center  -space-x-px h-8 text-sm">
           <li onClick={goToPreviousPage}>
             <a
               href="#"
@@ -194,8 +193,8 @@ function Complaint() {
 
   return (
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg grid gap-3">
-        <table className="w-full text-sm text-left text-gray-500 min-w-[1000px]">
-          <thead className="text-xs text-gray-700 bg-gray-50">
+        <table className="w-full text-sm text-left  min-w-[1000px]">
+          <thead className="text-xs text-gray-700 border-b border-b-white">
             <tr>
               <th
                 scope="col"
@@ -306,7 +305,7 @@ function Complaint() {
           </thead>
           {showData()}
         </table>
-        <div className="py-10 px-5 w-full flex items-center justify-between mx-auto">
+        <div className="py-10 px-5 w-full flex flex-col gap-5 mx-auto">
         <p className="pl-2 text-sm text-[#7E7E7E]">
           {complaintsData.length} Dashboards
         </p>
