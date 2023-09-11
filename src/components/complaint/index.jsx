@@ -193,7 +193,8 @@ function Complaint() {
   };
 
   return (
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg grid gap-3">
+    <div >
+      <div className="relavive overflow-x-auto shadow-md sm:rounded-lg grid gap-3">
         <table className="w-full text-sm text-left text-gray-500 min-w-[1000px]">
           <thead className="text-xs text-gray-700 bg-gray-50">
             <tr>
@@ -306,14 +307,17 @@ function Complaint() {
           </thead>
           {showData()}
         </table>
-        <div className="py-10 px-5 w-full flex items-center justify-between mx-auto">
+      </div>
+
+      <div className=" py-10 px-5 w-full flex items-center justify-between mx-auto">
         <p className="pl-2 text-sm text-[#7E7E7E]">
           {complaintsData.length} Dashboards
         </p>
 
         <div className="">{showPagination()}</div>
-        </div>
       </div>
+
+    </div>
   );
 }
 
