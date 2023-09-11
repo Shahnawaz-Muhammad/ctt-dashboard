@@ -50,21 +50,21 @@ export default function Sidebar() {
           ))}
         </div>
       </div>
-      <div className="flex flex-col gap-0.5 relative">
+      <div className="flex flex-col gap-0.5 relative items-center justify-center">
         <div
           className={` cursor-pointer text-red-500 , ${linkClass}`}
           onMouseEnter={() => setShowLogout(true)}
           onMouseLeave={handleMouseLeave}
         >
           <span>
-            <HiOutlineLogout className="hover:text-5xl text-3xl transition-all duration-300 text-red" />
+            <HiOutlineLogout className="hover:text-5xl hover:bg-gray-300  hover:p-1 hover:shadow-lg text-3xl transition-all duration-300 text-red" />
           </span>
           {showLogoout && (
             <motion.div
               initial={{ opacity: 0, x: -15 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay:.2 }}
-              className={`${enabled ? "bg-gray-600" : "bg-greyDark"}  px-3 py-2 rounded-r-lg shadow-xl absolute left-14 font-semibold`}
+              className={`${enabled ? "bg-gray-600" : "bg-gray-300"}  px-3 py-2 rounded-r-lg shadow-xl absolute top-2 left-16 font-semibold`}
             >
               Logout
             </motion.div>
@@ -82,14 +82,14 @@ function SidebarLink({ link, handleMouseEnter, handleMouseLeave, isHovered }) {
   return (
     <Link
       to={link.path}
-      className={` ${linkClass} relative w-full h-full `}
+      className={` ${linkClass} relative w-20 h-full flex flex-col `}
       onMouseEnter={() => handleMouseEnter(link.key)}
       onMouseLeave={handleMouseLeave}
     >
       <div
         className={`${
           pathname === link.path ? " text-gray-500 text-5xl" : "text-gray-700 text-3xl"
-        } ${enabled ? "text-white" : "text-gray-600"} ${isHovered ? 'text-5xl transition-all duration-300 ' : 'text-3xl transition-all duration-300'}`}
+        } ${enabled ? "text-white" : "text-gray-600"} ${isHovered ? ' bg-gray-300 text-5xl p-1 shadow-lg transition-all duration-300 ' : 'text-3xl transition-all duration-300'}`}
       >
         {link.icon}
       </div>
@@ -100,7 +100,7 @@ function SidebarLink({ link, handleMouseEnter, handleMouseLeave, isHovered }) {
           transition={{ duration: 0.5, delay: 0.2}}
           className={`${
             enabled ? "bg-gray-600" : "bg-gray-300"
-          } px-3 py-2 rounded-r-lg shadow-xl absolute top-0 left-14 font-semibold`}
+          } px-3 py-2 rounded-r-lg shadow-xl absolute top-2 z-10 left-16 font-semibold`}
         >
           <div className="flex flex-col gap-2 justify-center w-40">
             <span className="flex justify-center">{link.label}</span>
