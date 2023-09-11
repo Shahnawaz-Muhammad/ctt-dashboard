@@ -2,7 +2,7 @@ import { useState } from "react";
 import { complaintsData } from "../../dummyData/complaintsData";
 
 function Complaint() {
-  const [postsPerPage, setPostsPerPage] = useState(10);
+  const [postsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
 
   const showData = () => {
@@ -296,11 +296,13 @@ function Complaint() {
           </thead>
           {showData()}
         </table>
+        <div className="py-10 px-5 w-full flex items-center justify-between mx-auto">
         <p className="pl-2 text-sm text-[#7E7E7E]">
           {complaintsData.length} Dashboards
         </p>
 
         <div className="">{showPagination()}</div>
+        </div>
       </div>
   );
 }
