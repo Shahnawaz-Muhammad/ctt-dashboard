@@ -48,7 +48,7 @@ function  SearchBar() {
   return (
     <div className="flex flex-row z-50" ref={dropdownRef}>
       
-          <div className="relative hidden md:flex items-center">
+          <div className="relative items-center">
             <div
               className={`${
                 enabled ? "bg-gray-700 text-white" : "bg-greyDark text-gray-800"
