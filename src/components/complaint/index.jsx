@@ -34,7 +34,17 @@ function Complaint() {
               {item.source ? item.source.toString() : "-"}
             </td>
             <td className="px-6 py-4">
-              <h3 className="bg-yellow-500 rounded-3xl px-2 py-1 text-xs font-bold text-white">
+              <h3
+                className={`rounded-3xl px-2 py-1 text-xs text-center font-bold text-white ${
+                  item.Status === 'Pending'
+                    ? 'bg-red'
+                    : item.Status === 'In Process'
+                    ? 'bg-yellow-500'
+                    : item.Status === 'Resolved'
+                    ? 'bg-green-500'
+                    : 'bg-gray-500' // Default color for unknown statuses
+                }`}
+              >
                 {item.Status ? item.Status.toString() : "-"}
               </h3>
             </td>

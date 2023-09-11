@@ -1,6 +1,6 @@
 import { HiOutlineSearch } from "react-icons/hi";
 import { useState, useContext } from "react";
-import { ThemeContext } from "../../context/themeContext";
+import { ThemeContext } from "../../../context/themeContext";
 
 function SearchBar() {
   const [selectedOption, setSelectedOption] = useState("Phase");
@@ -22,7 +22,7 @@ function SearchBar() {
   };
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row z-50">
       <ul className="nav justify-content-end">
         <li className="nav-item">
           <div className="relative hidden md:flex items-center">

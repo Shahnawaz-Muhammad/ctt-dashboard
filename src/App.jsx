@@ -4,7 +4,6 @@ import Dashboard from "./pages/dashboard";
 import Customers from "./pages/customers";
 import "./App.css";
 import ThemeContextProvider from "./context/themeContext";
-import Practice from "./components/practice";
 
 function App() {
  
@@ -22,10 +21,6 @@ function App() {
         {
           path: "customers",
           element: <Customers />,
-        },
-        {
-          path: "practice",
-          element: <Practice />,
         },
         {
           path: "/",
