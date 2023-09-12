@@ -13,7 +13,7 @@ export default function Layout() {
         <Header />
         <div className="flex flex-1 flex-row overflow-auto">
           <Sidebar />
-          <div className={`${enabled ? "bg-gray-600" : "bg-greyDark"} flex-1 min-h-0 max-h-screen overflow-auto  mx-8 rounded-2xl`}>
+          <div className={`${enabled ? "bg-gray-600" : "bg-greyDark"} flex-1 min-h-0 max-h-screen overflow-auto mx-2  md:mx-8 rounded-2xl`}>
             <div className="w-full py-5 px-5 md:px-10 ">
               <Outlet />
             </div>

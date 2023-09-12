@@ -23,6 +23,7 @@ ChartJS.register(
 
 export const options = {
   responsive: true,
+  maintainAspectRatio: false, 
   plugins: {
     legend: {
       position: 'top',
@@ -60,7 +61,7 @@ export const data = {
 
 export function LineChart() {
   return (
-  <div className="w-full flex justify-center h-[30rem]">
+  <div className="w-full flex justify-center h-[30rem] p-5">
   <Line options={options} data={data} />
   </div>
   )

@@ -58,7 +58,7 @@ function Complaint() {
   const showPagination = () => {
     const pageNumbers = [];
     const totalPosts = complaintsData.length;
-    const maxPageNumbers = 8; // Maximum number of page numbers to display
+    const maxPageNumbers = 4; // Maximum number of page numbers to display
     const numbersBeforeEllipsis = Math.floor((maxPageNumbers - 2) / 2);
     const numbersAfterEllipsis = Math.ceil((maxPageNumbers - 2) / 2);
 

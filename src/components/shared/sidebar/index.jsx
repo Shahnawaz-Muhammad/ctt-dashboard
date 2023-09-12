@@ -15,7 +15,7 @@ const linkClass =
 
 export default function Sidebar() {
   const [hoveredIcon, setHoveredIcon] = useState(null);
-  const [showLogoout, setShowLogout] = useState(false);
+  // const [showLogoout, setShowLogout] = useState(false);
 
   const { enabled } = useContext(ThemeContext);
 
@@ -25,52 +25,69 @@ export default function Sidebar() {
 
   const handleMouseLeave = () => {
     setHoveredIcon(null);
-    setShowLogout(false);
   };
+
+  const [showLogoutTooltip, setShowLogoutTooltip] = useState(false);
+
+  const handleLogoutMouseEnter = () => {
+    setShowLogoutTooltip(true);
+  };
+
+  const handleLogoutMouseLeave = () => {
+    setShowLogoutTooltip(false);
+  };
+
   return (
     <div
       className={`${
         enabled ? "bg-gray-600" : "bg-greyDark"
-      }  lg:px-1 py-10 flex flex-col rounded-2xl justify-between`}
+      }  lg:px-1 py-5 flex flex-col rounded-2xl justify-between`}
     >
-      <div className="flex flex-col justify-center items-center">
+      <div className="h-full flex flex-col justify-center items-center">
         <div className="flex items-center justify-center ">
           <FcBullish fontSize={34} />
           {/* <span className="text-neutral-200 text-lg">OpenShop</span> */}
         </div>
-        <div className="py-8 flex  flex-col justify-around gap-2">
-          {DASHBOARD_SIDEBAR_LINKS.map((link) => (
-            <SidebarLink
-              key={link.key}
-              link={link}
-              handleMouseEnter={handleMouseEnter}
-              handleMouseLeave={handleMouseLeave}
-              isHovered={hoveredIcon === link.key}
-            />
-          ))}
+        <div className="flex flex-col justify-between h-full items-center">
+          <div className="py-8 flex flex-col  gap-2 h-full">
+            {DASHBOARD_SIDEBAR_LINKS.map((link) => (
+              <SidebarLink
+                key={link.key}
+                link={link}
+                handleMouseEnter={handleMouseEnter}
+                handleMouseLeave={handleMouseLeave}
+                isHovered={hoveredIcon === link.key}
+              />
+            ))}
+          </div>
+          <div
+            className="relative cursor-pointer"
+            onMouseEnter={handleLogoutMouseEnter}
+            onMouseLeave={handleLogoutMouseLeave}
+          >
+            <span>
+              <HiOutlineLogout
+                className={`${
+                  showLogoutTooltip
+                    ? " bg-gray-300 text-5xl p-1 shadow-lg  "
+                    : "text-3xl "
+                } max-w-full h-full w-full transition-all duration-300 text-red`}
+              />
+            </span>
+            {showLogoutTooltip && (
+              <motion.div
+                initial={{ opacity: 0, x: -15 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="bg-gray-300 px-3 py-2  rounded-r-lg shadow-xl absolute top-0 left-14 font-semibold"
+              >
+                Logout
+              </motion.div>
+            )}
+          </div>
         </div>
       </div>
       {/* <div className="relative "> */}
-        <div
-          className={`relative cursor-pointer text-red-500 , ${linkClass}`}
-          onMouseEnter={() => setShowLogout(true)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <span>
-            <HiOutlineLogout className="hover:text-5xl hover:bg-gray-300  max-w-full hover:shadow-lg text-3xl transition-all duration-300 text-red" />
-          </span>
-          {showLogoout && (
-            <motion.div
-              initial={{ opacity: 0, x: -15 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay:.2 }}
-              className={`${enabled ? "bg-gray-600" : "bg-gray-300"}  px-3 py-2 rounded-r-lg shadow-xl absolute top-2 left-16 font-semibold`}
-            >
-              Logout
-            </motion.div>
-          )}
-        {/* </div> */}
-      </div>
     </div>
   );
 }
@@ -88,8 +105,14 @@ function SidebarLink({ link, handleMouseEnter, handleMouseLeave, isHovered }) {
     >
       <div
         className={`${
-          pathname === link.path ? " text-gray-500 text-5xl" : "text-gray-700 text-3xl"
-        } ${enabled ? "text-white" : "text-gray-600"} ${isHovered ? ' bg-gray-300 text-5xl p-1 shadow-lg transition-all duration-300 ' : 'text-3xl transition-all duration-300'}`}
+          pathname === link.path
+            ? " text-gray-500 text-5xl"
+            : "text-gray-700 text-3xl"
+        } ${enabled ? "text-white" : "text-gray-600"} ${
+          isHovered
+            ? " bg-gray-300 text-5xl p-1 shadow-lg transition-all duration-300 "
+            : "text-3xl transition-all duration-300"
+        }`}
       >
         {link.icon}
       </div>
@@ -97,7 +120,7 @@ function SidebarLink({ link, handleMouseEnter, handleMouseLeave, isHovered }) {
         <motion.div
           initial={{ opacity: 0, x: -15 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2}}
+          transition={{ duration: 0.5, delay: 0.2 }}
           className={`${
             enabled ? "bg-gray-600" : "bg-gray-300"
           } px-3 py-2 rounded-r-lg shadow-xl absolute top-2 z-10 left-16 font-semibold`}
@@ -105,7 +128,7 @@ function SidebarLink({ link, handleMouseEnter, handleMouseLeave, isHovered }) {
           <div className="flex flex-col gap-2 justify-center w-40">
             <span className="flex justify-center">{link.label}</span>
             {link.subItems && (
-              <div >
+              <div>
                 {link.subItems.map((subItem) => (
                   <motion.div
                     key={subItem.key}

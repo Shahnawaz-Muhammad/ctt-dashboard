@@ -61,7 +61,7 @@ function  SearchBar() {
               placeholder="Type Your Search..."
               className={`${
                 enabled ? "bg-gray-300 text-white" : "bg-white text-black"
-              } text-sm focus:outline-none active:outline-none shadow-lg w-[20rem] md:w-[22rem] lg:w-[25rem] h-10 pl-14 pr-44 rounded-full`}
+              } text-sm focus:outline-none active:outline-none shadow-lg w-[20rem] md:w-[22rem] lg:w-[25rem] h-10 pl-12 pr-24 md:pr-28  rounded-full`}
             />
             <div
               className={`${
